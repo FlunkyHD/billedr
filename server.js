@@ -11,8 +11,10 @@ const requestListener = function (req, res) {
     console.log(`${req.method} ${req.url}`);
 
     if(req.url === "/get/pictureCount/"){
-        console.log("HEEJJJJ");
-        console.log(getAllDirFiles(IMGPATH).length);
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.write(JSON.stringify(getAllDirFiles(IMGPATH)));
+        res.end('\n');
     }
 
     // parse URL
