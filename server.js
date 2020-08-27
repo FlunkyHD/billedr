@@ -45,9 +45,9 @@ const requestListener = function (req, res) {
             // if file doesn't exist, return error (404)
             res.statusCode = 404;
             res.end(`File ${pathname} not found!`);
-            //res.end('File ${pathname} not found!');
             return;
         }
+
         // if is a directory search for index file matching the extention
         if (fs.statSync(pathname).isDirectory()) {
             pathname += '/index' + ext;
@@ -58,7 +58,6 @@ const requestListener = function (req, res) {
             if (error) {
                 res.statusCode = 500;
                 res.end(`Error getting the file: ${error}.`);
-                //res.end('Error getting the file: ${error}.');
             }
             else {
                 // if the file is found, set content type and send data
@@ -76,17 +75,17 @@ console.log('Server running at http://127.0.0.1:8080');
 
 
 const getAllDirFiles = function (dirPath, arrayOfFiles) {
-    files = fs.readdirSync(dirPath)
+    files = fs.readdirSync(dirPath);
 
-    arrayOfFiles = arrayOfFiles || []
+    arrayOfFiles = arrayOfFiles || [];
 
     files.forEach(function (file) {
         if (fs.statSync(dirPath + "/" + file).isDirectory()) {
-            arrayOfFiles = getAllFiles(dirPath + "/" + file, arrayOfFiles)
+            arrayOfFiles = getAllFiles(dirPath + "/" + file, arrayOfFiles);
         } else {
-            arrayOfFiles.push(file)
+            arrayOfFiles.push(file);
         }
     })
 
-    return arrayOfFiles
+    return arrayOfFiles;
 }
