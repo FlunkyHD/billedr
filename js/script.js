@@ -1,4 +1,4 @@
-// Insert navigation bar
+// Insert navigation bar (from: https://stackoverflow.com/questions/31954089/how-can-i-reuse-a-navigation-bar-on-multiple-pages)
 $(function(){
   $("#nav-bar-placeholder").load("/nav-bar/nav-bar-index.html");
 });
@@ -16,13 +16,21 @@ function getData(){
 
 function insertData(data){
     data.forEach(picture => {
-        console.log(picture);
+        // Create image
         const image = document.createElement('img');
         image.src  = '/img/' + picture;
         image.style.height = "35%";
         image.style.width = "25%";
         image.style.padding = "4%";
-        document.querySelector('.billeder').appendChild(image)
+        
+        // Create anchor (from: https://stackoverflow.com/questions/4772774/how-do-i-create-a-link-using-javascript)
+        let a = document.createElement('a');
+        a.href = "/picture/" + picture;
+
+        a.appendChild(image);
+
+        document.querySelector('.billeder').appendChild(a);
+
     });
 }
 

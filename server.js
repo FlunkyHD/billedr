@@ -10,6 +10,14 @@ const IMGPATH = "./img";
 const requestListener = function (req, res) {
     console.log(`${req.method} ${req.url}`);
 
+    let splitUrl = req.url.split("/"); // Index 0 is ""
+    
+    if(splitUrl[1] === "picture"){
+        res.writeHead(302, {"Location": "/picture/picture-index.html?" + splitUrl[2]});
+        res.write("HEEEJJJJ");
+        res.end();
+    }
+
     if(req.url === "/get/pictureCount/"){
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
@@ -19,13 +27,14 @@ const requestListener = function (req, res) {
 
     // parse URL
     const parsedUrl = url.parse(req.url);
-    //console.log(parsedUrl);
+    
     // extract URL path
     let pathname = `.${parsedUrl.pathname}`;
     console.log(pathname);
+
     // based on the URL path, extract the file extention. e.g. .js, .doc, ...
     const ext = path.parse(pathname).ext;
-    //console.log(ext);
+    
     // maps file extention to MIME typere
     const map = {
         '.ico': 'image/x-icon',
