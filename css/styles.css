@@ -7,3 +7,10 @@
     padding: 10px;
     text-align: center;
 }
+
+.billeder {
+    background-color: blueviolet;
+    padding-top: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
