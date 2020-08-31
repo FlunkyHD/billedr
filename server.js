@@ -12,11 +12,12 @@ const requestListener = function (req, res) {
 
     let splitUrl = req.url.split("/"); // Index 0 is ""
     
+    /** 
     if(splitUrl[1] === "picture"){
         res.writeHead(302, {"Location": "/picture/picture-index.html?" + splitUrl[2]});
         res.write("HEEEJJJJ");
         res.end();
-    }
+    }  */
 
     if(req.url === "/get/pictureCount/"){
         res.statusCode = 200;

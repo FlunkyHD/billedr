@@ -25,7 +25,11 @@ function insertData(data){
         
         // Create anchor (from: https://stackoverflow.com/questions/4772774/how-do-i-create-a-link-using-javascript)
         let a = document.createElement('a');
-        a.href = "/picture/" + picture;
+
+        // Encode name of picture
+        let encodedURI = encodeURI(picture);
+
+        a.href = "/picture/picture-index.html?" + encodedURI;
 
         a.appendChild(image);
 
